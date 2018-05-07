@@ -19,9 +19,10 @@
 		<img src="<?php echo img; ?>/logo.svg" class="logo">
 		<nav>
 			<ul class="list-inline">
-				<li><a href="#">Meny</a></li>
-				<li><a href="#">En annan</a></li>
-				<li><a href="#">En tredje</a></li>
+				<li><a href="#">Om oss</a></li>
+				<li><a href="#">Varför</a></li>
+				<li><a href="#">Kunder</a></li>
+				<li><a href="#">Kontakt</a></li>				
 			</ul>
 		</nav>
 	</header>
