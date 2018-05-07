@@ -16,7 +16,7 @@
 </head>
 <body>
 	<header>
-		<img src="<?php echo img; ?>/logo.svg" class="logo">
+		<a href="<?php echo get_home_url(); ?>"><img src="<?php echo img; ?>/logo.svg" class="logo"></a>
 		<nav>
 			<ul class="list-inline">
 				<li><a href="#">Om oss</a></li>
