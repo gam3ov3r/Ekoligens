@@ -22,6 +22,7 @@
 				<li><a href="#">Om oss</a></li>
 				<li><a href="#">Varför</a></li>
 				<li><a href="#">Kunder</a></li>
+				<li><a href="#">Nyheter</a></li>
 				<li><a href="#">Kontakt</a></li>				
 			</ul>
 		</nav>
