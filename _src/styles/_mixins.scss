@@ -1,0 +1,154 @@
+/*------------------------------------------------------------ */
+/* TRANSITIONS
+-------------------------------------------------------------- */
+@mixin transition($duration) {
+	-webkit-transition: $duration;
+	-moz-transition: $duration;
+	-o-transition: $duration;
+	-ms-transition: $duration;
+	transition: $duration;
+}
+/*------------------------------------------------------------ */
+/* SATURATE
+-------------------------------------------------------------- */
+@mixin saturate($value) {
+	filter: saturate($value);
+    -webkit-filter: saturate($value);
+    -moz-filter: saturate($value);
+    -o-filter: saturate($value);
+    -ms-filter: saturate($value);
+}
+/*------------------------------------------------------------ */
+/* CENTER BLOCK
+-------------------------------------------------------------- */
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*------------------------------------------------------------ */
+/* OPACITY
+-------------------------------------------------------------- */
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+/*------------------------------------------------------------ */
+/* BORDER RADIUS
+-------------------------------------------------------------- */
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+/*------------------------------------------------------------ */
+/* HEADINGS
+-------------------------------------------------------------- */
+/* Create a step size. */
+/* This is the percentage each heading will be reduced by. */
+$step-size-heading: 0.33333;
+/* Amplifier value */
+$amplifier-heading: 1.5;
+/* The mixin */
+@mixin heading-size($size) {
+    font-size: $size * $step-size-heading * $amplifier-heading + em;
+}
+/*------------------------------------------------------------ */
+/* SHADOW
+/* Example: @include box-shadow(0px, 10px, 14px, -7px $brand-secondary, $inset: false);
+-------------------------------------------------------------- */
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+/*------------------------------------------------------------ */
+/* GRADIENT
+/* Example: @include linear-gradient(#31B7D7, #EDAC7D);
+/* Example: @include linear-gradient(to right, #E47D7D 0%, #C195D3 50%, #4FB4E8 100%);
+/* Example: @include linear-gradient(42deg, #B58234 0%, #D2B545 50%, #D7C04D 50.01%, #FFFFFF 100%);
+-------------------------------------------------------------- */
+/// Convert angle
+/// @author Chris Eppstein
+/// @param {Number} $value - Value to convert
+/// @param {String} $unit - Unit to convert to
+/// @return {Number} Converted angle
+
+@function convert-angle($value, $unit) {
+  $convertable-units: deg grad turn rad;
+  $conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+    @return $value
+             / nth($conversion-factors, index($convertable-units, unit($value)))
+             * nth($conversion-factors, index($convertable-units, $unit));
+  }
+  
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+/// Test if `$value` is an angle
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+  $is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+  
+  @return $is-direction or $is-angle;
+}
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction";
+  }
+  
+  $conversion-map: ( 
+    to top          : bottom,
+    to top right    : bottom left,
+    to right top    : left bottom,
+    to right        : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom       : top,
+    to bottom left  : top right,
+    to left bottom  : right top,
+    to left         : right,
+    to left top     : right bottom,
+    to top left     : bottom right
+  );
+    
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+  
+  @return 90deg - convert-angle($value, 'deg');
+}
+
+/// Mixin printing a linear-gradient 
+/// as well as a plain color fallback 
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+  
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}

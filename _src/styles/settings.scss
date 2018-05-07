@@ -1,0 +1,148 @@
+/*------------------------------------------------------------ */
+/* GENERAL
+-------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	background: #fff;
+	transition: background-color 500ms 0s;
+    -webkit-font-smoothing:antialiased;
+    font-smoothing:antialiased;
+    text-rendering: OptimizeLegibility;
+	font-family: $font-sansserif;
+	font-weight: 400;
+	font-size: 1.8em;
+	line-height: 1.7em;
+}
+a {
+	@include transition(0.3s);
+	color: $secondary;
+	&:hover {
+		color: $primary;
+	}
+}
+header {
+	text-align: center;
+	background: #F3F0E5;
+	& .logo {
+		max-width: 300px;
+		height: auto;
+		padding: 40px 0 0 0;
+	}
+}
+nav {
+	padding: 20px 0;
+	a {
+		@include transition(0.3s);
+		color: #079bc8;
+		font-weight: 600;
+		&:hover {
+			color: $primary;
+		}
+	}
+}
+footer {
+	background: #fff;
+	text-align: center;
+	padding: 10px 0;
+	font-family: $font-sansserif;
+	font-weight: 600;
+	font-size: 0.6em;
+	text-transform: uppercase;
+}
+/*------------------------------------------------------------ */
+/* MEDIA
+-------------------------------------------------------------- */
+.media img {
+	max-width: 200px;
+	height: auto;
+}
+/*------------------------------------------------------------ */
+/* TEST
+-------------------------------------------------------------- */
+img.test {
+	max-width: 100%;
+	height: auto;
+	position: relative;
+	border-radius: 2px;
+	z-index: 10;
+	margin: 50px 0 -100px 0;
+	box-shadow: 0 45px 54px 0 rgba(32, 34, 58, 0.12), 0 1px 3px 0 rgba(32, 34, 58, 0.3);	
+}
+/*------------------------------------------------------------ */
+/* SECTION INTRO
+-------------------------------------------------------------- */
+.intro {
+	background: #F3F0E5;
+	& h1 {
+		font-weight: 800;
+		font-size: 0.8em;
+		text-transform: uppercase;
+		padding: 0 0 30px 0;
+	}
+	& p {
+		font-family: $font-serif;
+		font-style: italic;
+		font-size: 1.4em;
+		line-height: 1.8em;
+	}
+}
+/*------------------------------------------------------------ */
+/* SECTIONS
+-------------------------------------------------------------- */
+.news {
+	background: #CAD3C9;
+	padding: 80px 0 40px 0;
+	& .media .media-heading {
+		font-weight: 800;
+		font-size: 0.9em;
+	}
+	& .media {
+		text-align: left;
+		font-size: 0.9em;
+		line-height: 1.5em;
+		padding: 0 0 40px 0;
+	}				
+}
+.why {
+	background: #D7C0B6;
+	& .embed-responsive {
+		box-shadow: 0 9px 36px 0 #77635F;
+		margin: 0 0 40px 0;
+	}
+	& p {
+		font-style: italic;		
+	}		
+}
+.about {
+	background: #F3F3F3;
+	& p {
+		font-family: $font-sansserif;
+		font-weight: 800;
+		font-size: 0.8em;
+		text-transform: uppercase;
+	}	
+}
+/*------------------------------------------------------------ */
+/* SECTION
+-------------------------------------------------------------- */
+section {
+	text-align: center;
+	padding: 40px 0;
+	& h2 {
+		font-family: $font-serif;
+		font-style: italic;
+		font-size: 3em;
+		line-height: 1.6em;
+		width: 100%;
+		padding: 0 0 40px 0;
+	}
+	& p {
+		font-family: $font-serif;		
+	}		
+}
