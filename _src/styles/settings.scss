@@ -21,9 +21,12 @@ body {
 }
 a {
 	@include transition(0.3s);
-	color: $secondary;
+	color: #0f0f0f;
+	font-weight: 700;
+	text-transform: uppercase;
 	&:hover {
-		color: $primary;
+		color: #079bc8;
+		text-decoration: none;
 	}
 }
 header {
@@ -36,13 +39,15 @@ header {
 	}
 }
 nav {
+	text-transform: uppercase;
+	font-weight: 700;
 	padding: 20px 0;
 	a {
 		@include transition(0.3s);
 		color: #079bc8;
-		font-weight: 600;
 		&:hover {
-			color: $primary;
+			color: #0f0f0f;
+			text-decoration: none;
 		}
 	}
 }
@@ -58,6 +63,9 @@ footer {
 /*------------------------------------------------------------ */
 /* MEDIA
 -------------------------------------------------------------- */
+.media-heading {
+	text-transform: uppercase;
+}
 .media img {
 	max-width: 200px;
 	height: auto;
