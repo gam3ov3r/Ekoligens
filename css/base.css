@@ -57,9 +57,12 @@ a {
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
-  color: #AA8EE5; }
+  color: #0f0f0f;
+  font-weight: 700;
+  text-transform: uppercase; }
   a:hover {
-    color: #655298; }
+    color: #079bc8;
+    text-decoration: none; }
 
 header {
   text-align: center;
@@ -70,6 +73,8 @@ header {
     padding: 40px 0 0 0; }
 
 nav {
+  text-transform: uppercase;
+  font-weight: 700;
   padding: 20px 0; }
   nav a {
     -webkit-transition: 0.3s;
@@ -77,10 +82,10 @@ nav {
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s;
-    color: #079bc8;
-    font-weight: 600; }
+    color: #079bc8; }
     nav a:hover {
-      color: #655298; }
+      color: #0f0f0f;
+      text-decoration: none; }
 
 footer {
   background: #fff;
@@ -94,6 +99,9 @@ footer {
 /*------------------------------------------------------------ */
 /* MEDIA
 -------------------------------------------------------------- */
+.media-heading {
+  text-transform: uppercase; }
+
 .media img {
   max-width: 200px;
   height: auto; }
