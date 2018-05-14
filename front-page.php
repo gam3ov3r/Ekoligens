@@ -24,7 +24,7 @@
 <?php 
     query_posts(array(
 		'post_type' => array('post'), 
-		'posts_per_page' => -1
+		'posts_per_page' => 3
     ));  
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
@@ -45,7 +45,7 @@
 	</div>
 </div>
 <?php endwhile; endif; wp_reset_query(); ?>
-
+<a href="#">Läs alla nyheter</a>
 		</div>
 	</div>
 </section>
