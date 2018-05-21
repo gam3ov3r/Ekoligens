@@ -3,7 +3,7 @@
 <section class="intro">
 	<div class="container">
 		<div class="col-md-8 col-md-offset-2">
-	<h1><?php the_title(); ?></h1>
+	<?php if(get_field('front_title')) { echo '<h1>' . get_field("front_title") . '</h1>'; } ?>	
 	<p><?php the_content('Read more →'); ?></p>
 
 	<?php
@@ -24,50 +24,52 @@
 <?php 
     query_posts(array(
 		'post_type' => array('post'), 
-		'posts_per_page' => 3
+		'posts_per_page' => 2
     ));  
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
 <div class="media" id="post-<?php the_ID(); ?>">
+<a href="<?php the_permalink();?>">	
 	<div class="media-left">
-		<a href="#">
 		<?php
 			if ( has_post_thumbnail() ) {
 				$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'your_thumb_handle' );
 				echo '<img src="' . $thumbnail['0'] . '" class="media-object">';
 			}
 		?>			
-		</a>
 	</div>
 	<div class="media-body">
 		<h4 class="media-heading"><?php the_title(); ?></h4>
-		<?php the_content('Read more →'); ?>
+		<?php the_excerpt();?>
 	</div>
+</a>	
 </div>
 <?php endwhile; endif; wp_reset_query(); ?>
-<a href="#">Läs alla nyheter</a>
+<a href="<?php echo home; ?>/nyheter/">Läs alla nyheter</a>
 		</div>
 	</div>
 </section>
 <section class="why">
 	<div class="container">
 		<div class="col-md-8 col-md-offset-2">
-	<h2>Varför?</h2>
+		<?php if(get_field('front_why_title')) { echo '<h2>' . get_field("front_why_title") . '</h2>'; } ?>			
 <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MeCiihx-JsA"></iframe>
+  <iframe class="embed-responsive-item" src="<?php if(get_field('front_why_video')) { echo get_field("front_why_video"); } ?>"></iframe>
 </div>	
-	<p>Ecoligentpaper® - Green Tech Hanger, är resultatet av ett innovationprojekt drivet av Ekoligens AB i samarbete med svensk skogs-/pappersindustri och utvecklad i samråd svensk klädindustri med avsikt att utveckla en klimatsmart klädgalge med minimal miljö- och klimat-påverkan och starka kommunikativa möjligheter.</p>
+	<p><?php if(get_field('front_why_text')) { echo get_field("front_why_text"); } ?></p>
 		</div>
 	</div>
 </section>
 <section class="about">
 	<div class="container">
 		<div class="col-md-8 col-md-offset-2">
-	<img src="<?php echo img; ?>/about.jpg" class="img-responsive">
-	<h2>Kontakt</h2>
-	<p>ekoligens ab - ecoligentpaper®<br>
-ljusterögatan 14 • 116 42 stockholm • sweden<br>
-hallo@ekoligens.se • +46 70 610 29 08</p>
+		<?php
+			if(get_field('front_contact_image')) {
+			echo '<img src="' . get_field("front_contact_image") . '" class="img-responsive">';
+			}
+		?>		
+		<?php if(get_field('front_contact_title')) { echo '<h2>' . get_field("front_contact_title") . '</h2>'; } ?>			
+	<p><?php if(get_field('front_contact_text')) { echo get_field("front_contact_text"); } ?></p>
 		</div>
 	</div>
 </section>
