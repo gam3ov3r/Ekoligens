@@ -16,9 +16,12 @@
 </head>
 <body>
 	<header>
-		<a href="<?php echo get_home_url(); ?>"><img src="<?php echo img; ?>/logo.svg" class="logo"></a>
+		<a href="<?php echo home; ?>"><img src="<?php echo img; ?>/logo.svg" class="logo"></a>
 		<nav>
 			<ul class="list-inline<?php if ( is_front_page() ) { echo " home"; }?>">
+			<?php if (!is_front_page() ) {
+				echo "<li><a href='" . home . "'>Hem</a></li>";
+			} ?>	
 			<?php
 				$defaults = array(
 					'theme_location' => 'main-menu',
