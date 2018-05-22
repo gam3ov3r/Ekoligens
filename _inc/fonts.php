@@ -12,5 +12,3 @@ WebFontConfig = {
 	s.parentNode.insertBefore(wf, s);
 })(); 
 </script>
-<script src="//use.typekit.net/wge4tqx.js"></script>
-<script>try{Typekit.load();}catch(e){}</script>
