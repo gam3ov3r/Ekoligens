@@ -100,12 +100,19 @@ img.intro-splash {
 		font-size: 0.8em;
 		text-transform: uppercase;
 		padding: 0 0 30px 0;
+		@media (max-width: 768px) {
+			font-size: 1em;
+			line-height: 2em;			
+		}		
 	}
 	& p {
 		font-family: $font-serif;
 		font-style: italic;
 		font-size: 1.4em;
 		line-height: 1.8em;
+		@media (max-width: 768px) {
+			font-size: 1em;			
+		}
 	}
 }
 /*------------------------------------------------------------ */
@@ -119,6 +126,14 @@ img.intro-splash {
 		font-size: 0.9em;
 		line-height: 1.5em;
 		padding: 0 0 40px 0;
+		& img {
+			max-width: 200px;
+			height: auto;
+			@media (max-width: 768px) {
+				max-width: 100%;
+				height: auto;
+			}
+		}
 		& a {
 			text-transform: inherit;
 			font-weight: inherit;
@@ -129,6 +144,15 @@ img.intro-splash {
 		& .media-heading {
 			font-weight: 800;
 			font-size: 0.9em;
+			@media (max-width: 768px) {
+				padding: 10px 0;
+			}
+		}
+		& .media-left {
+			display: table-cell;
+			@media (max-width: 768px) {
+				display: inherit;
+			}					
 		}			
 	}
 }
@@ -164,6 +188,9 @@ section {
 		line-height: 1.6em;
 		width: 100%;
 		padding: 0 0 40px 0;
+		@media (max-width: 768px) {
+			padding: 0 0 10px 0;
+		}
 	}
 	& p {
 		font-family: $font-serif;		
@@ -180,6 +207,10 @@ section {
 		font-size: 3em;
 		line-height: 1.6em;
 		width: 100%;
+		@media (max-width: 768px) {
+			font-size: 2em;
+			line-height: 1.2em;
+		}
 	}
 	& h2 {
 		font-family: $font-serif;
