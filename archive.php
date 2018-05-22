@@ -23,9 +23,4 @@ get_header(); ?>
 <?php endwhile; endif; wp_reset_query(); ?>
 	</div>
 </div>
-<!--
-    ###################
-	###  /LOOP END  ### 
-	###################
--->
 <?php get_footer(); ?>
