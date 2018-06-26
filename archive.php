@@ -3,6 +3,7 @@
 Template Name: Archives
 */
 get_header(); ?>
+<?php get_template_part('_inc/header'); ?>
 <div class="container">
 	<div class="col-md-8 col-md-offset-2">
 <?php 
