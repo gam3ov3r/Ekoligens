@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php get_template_part('_inc/header'); ?>
 <?php query_posts($query_string); if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <div class="container">
 	<div class="col-md-8 col-md-offset-2">
