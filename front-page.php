@@ -1,4 +1,13 @@
 <?php get_header(); ?>
+<section class="fullscreen">
+	<div class="middle">
+		<img src="<?php echo img; ?>/logo-white.svg" class="logo">
+		<div class="container">
+		<?php if(get_field('front_title')) { echo '<h1>' . get_field("front_title") . '</h1>'; } ?>
+		</div>
+	</div>
+</section>
+<?php get_template_part('_inc/header'); ?>
 <?php  query_posts($query_string); if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <section class="intro">
 	<div class="container">
